@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="es" class="h-full bg-slate-950 text-slate-100">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D Room Portfolio Prototype - Web Developer</title>
+  </head>
+  <body class="h-full w-full relative overflow-hidden bg-slate-950">
+    <div id="canvas-container"></div>
+
+    <div
+      class="relative z-10 pointer-events-none h-full w-full flex flex-col justify-between p-4 sm:p-6"
+    >
+      <header
+        class="flex flex-col sm:flex-row justify-between items-center gap-4 w-full max-w-7xl mx-auto"
+      >
+        <div
+          class="glass-panel px-4 py-2.5 rounded-2xl flex items-center gap-3 pointer-events-auto border-cyan-500/30 shadow-lg shadow-cyan-950/20"
+        >
+          <div class="w-3 h-3 rounded-full bg-cyan-400 animate-pulse"></div>
+          <div>
+            <h1
+              class="text-sm font-bold tracking-wide text-white uppercase flex items-center gap-2"
+            >
+              Alex Dev
+              <span
+                class="text-xs text-cyan-400 font-mono px-1.5 py-0.5 rounded bg-cyan-950/60 border border-cyan-800/50"
+                >PROTOTYPE 3D</span
+              >
+            </h1>
+            <p class="text-xs text-slate-400">
+              Habitación Interactiva de Proyectos
+            </p>
+          </div>
+        </div>
+
+        <nav
+          class="glass-panel p-1.5 rounded-2xl flex items-center gap-1 sm:gap-2 pointer-events-auto shadow-xl"
+        >
+          <button
+            class="nav-btn px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all flex items-center gap-1.5 active-nav"
+            data-wall="overview"
+          >
+            <i class="fa-solid fa-arrows-to-eye text-cyan-400"></i> Vista
+            General
+          </button>
+          <button
+            class="nav-btn px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all flex items-center gap-1.5"
+            data-wall="north"
+          >
+            <i class="fa-solid fa-tv text-indigo-400"></i> Pared 1: TV
+          </button>
+          <button
+            class="nav-btn px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all flex items-center gap-1.5"
+            data-wall="east"
+          >
+            <i class="fa-solid fa-chalkboard text-emerald-400"></i> Pared 2:
+            Pizarrón
+          </button>
+          <button
+            class="nav-btn px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all flex items-center gap-1.5"
+            data-wall="south"
+          >
+            <i class="fa-solid fa-image text-amber-400"></i> Pared 3: Cuadro
+          </button>
+          <button
+            class="nav-btn px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all flex items-center gap-1.5"
+            data-wall="west"
+          >
+            <i class="fa-solid fa-desktop text-fuchsia-400"></i> Pared 4: Holo
+          </button>
+        </nav>
+      </header>
+
+      <div
+        id="hover-tooltip"
+        class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-0 transition-all duration-300 scale-90 glass-panel px-4 py-2.5 rounded-xl flex items-center gap-3 border border-cyan-500/40 shadow-2xl z-20"
+      >
+        <div
+          class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold"
+        >
+          <i class="fa-solid fa-hand-pointer animate-bounce"></i>
+        </div>
+        <div>
+          <p id="tooltip-title" class="text-sm font-bold text-white">
+            Nombre del Proyecto
+          </p>
+          <p class="text-xs text-cyan-300">Haz clic para expandir detalles</p>
+        </div>
+      </div>
+
+      <footer
+        class="w-full max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-slate-400"
+      >
+        <div
+          class="glass-panel px-4 py-2 rounded-xl flex items-center gap-4 pointer-events-auto"
+        >
+          <span class="flex items-center gap-1.5 text-slate-300">
+            <kbd
+              class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 font-mono text-[10px] text-cyan-400"
+              >Arrastrar</kbd
+            >
+            Rotar cámara
+          </span>
+          <span class="text-slate-600">•</span>
+          <span class="flex items-center gap-1.5 text-slate-300">
+            <kbd
+              class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 font-mono text-[10px] text-cyan-400"
+              >Rueda</kbd
+            >
+            Zoom
+          </span>
+          <span class="text-slate-600">•</span>
+          <span class="flex items-center gap-1.5 text-slate-300">
+            <kbd
+              class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 font-mono text-[10px] text-cyan-400"
+              >Clic Pantalla</kbd
+            >
+            Ver Proyecto
+          </span>
+        </div>
+
+        <div
+          class="glass-panel px-3 py-1.5 rounded-xl pointer-events-auto text-slate-400 text-[11px] flex items-center gap-2"
+        >
+          <i class="fa-solid fa-cube text-cyan-400"></i> Prototipo Procedural
+          sin Assets Externos
+        </div>
+      </footer>
+    </div>
+
+    <div
+      id="project-modal"
+      class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 opacity-0 pointer-events-none transition-all duration-300 scale-95"
+    >
+      <div
+        class="glass-panel w-full max-w-3xl max-h-[90vh] rounded-3xl overflow-hidden border border-slate-700/60 shadow-2xl flex flex-col relative"
+      >
+        <div
+          class="p-6 pb-4 border-b border-slate-800 flex items-start justify-between gap-4"
+        >
+          <div class="flex items-center gap-3">
+            <div
+              id="modal-icon-badge"
+              class="w-12 h-12 rounded-2xl bg-indigo-500/20 border border-indigo-500/30 text-indigo-400 flex items-center justify-center text-xl"
+            >
+              <i class="fa-solid fa-code"></i>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <span
+                  id="modal-wall-tag"
+                  class="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700"
+                  >Pared 1 • TV Display</span
+                >
+                <span
+                  id="modal-status"
+                  class="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-400 border border-emerald-800/50"
+                  >Completado</span
+                >
+              </div>
+              <h2 id="modal-title" class="text-2xl font-bold text-white mt-1">
+                Título del Proyecto
+              </h2>
+            </div>
+          </div>
+          <button
+            id="modal-close-btn"
+            aria-label="Cerrar modal"
+            class="w-9 h-9 rounded-full bg-slate-800/80 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center transition-all"
+          >
+            <i class="fa-solid fa-xmark text-lg"></i>
+          </button>
+        </div>
+
+        <div class="p-6 overflow-y-auto space-y-6">
+          <div
+            class="relative w-full aspect-video rounded-2xl overflow-hidden border border-slate-800 bg-slate-900 shadow-inner group"
+          >
+            <canvas
+              id="modal-preview-canvas"
+              class="w-full h-full object-cover"
+            ></canvas>
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-4"
+            >
+              <span
+                class="text-xs font-mono text-slate-300 bg-slate-900/90 px-3 py-1 rounded-lg border border-slate-700 flex items-center gap-2"
+              >
+                <i class="fa-solid fa-eye text-cyan-400"></i> Textura Generada
+                en Tiempo Real (2D Canvas API)
+              </span>
+            </div>
+          </div>
+
+          <div>
+            <h3
+              class="text-xs font-mono uppercase tracking-wider text-slate-400 mb-2"
+            >
+              Descripción General
+            </h3>
+            <p
+              id="modal-description"
+              class="text-slate-300 text-sm leading-relaxed"
+            >
+              Descripción detallada del proyecto cargado dinámicamente...
+            </p>
+          </div>
+
+          <div>
+            <h3
+              class="text-xs font-mono uppercase tracking-wider text-slate-400 mb-2"
+            >
+              Tecnologías & Herramientas
+            </h3>
+            <div id="modal-tech-stack" class="flex flex-wrap gap-2"></div>
+          </div>
+
+          <div
+            class="glass-card p-4 rounded-2xl border border-cyan-500/20 bg-cyan-950/10 text-xs text-slate-300 space-y-2"
+          >
+            <div class="flex items-center gap-2 font-bold text-cyan-400">
+              <i class="fa-solid fa-code-compare"></i> ¿Cómo reemplazar por un
+              Modelo 3D (.gltf / .glb)?
+            </div>
+            <p class="text-slate-400 leading-relaxed">
+              Este elemento interactivo está construido con
+              <code
+                class="font-mono text-cyan-300 bg-slate-900 px-1 py-0.5 rounded"
+                >Three.BoxGeometry</code
+              >
+              y una textura plana. En el archivo de código se incluye la función
+              comentada para sustituirlo fácilmente con
+              <code
+                class="font-mono text-cyan-300 bg-slate-900 px-1 py-0.5 rounded"
+                >GLTFLoader</code
+              >
+              manteniendo los mismos eventos de raycasting y animaciones de
+              cámara.
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="p-4 sm:p-6 border-t border-slate-800 bg-slate-900/50 flex flex-wrap items-center justify-between gap-3"
+        >
+          <div class="text-xs text-slate-400 font-mono">
+            Status: <span class="text-emerald-400">Producción Ready</span>
+          </div>
+          <div class="flex items-center gap-3 w-full sm:w-auto">
+            <a
+              id="modal-github-link"
+              href="#"
+              target="_blank"
+              class="flex-1 sm:flex-none px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold flex items-center justify-center gap-2 transition-all"
+            >
+              <i class="fa-brands fa-github text-sm"></i> Ver Código
+            </a>
+            <a
+              id="modal-demo-link"
+              href="#"
+              target="_blank"
+              class="flex-1 sm:flex-none px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white text-xs font-semibold flex items-center justify-center gap-2 shadow-lg shadow-cyan-950/50 transition-all"
+            >
+              <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+              Abrir Demo Live
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
