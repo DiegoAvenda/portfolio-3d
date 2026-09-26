@@ -22,15 +22,13 @@
             <h1
               class="text-sm font-bold tracking-wide text-white uppercase flex items-center gap-2"
             >
-              Alex Dev
+              Diego Avendaño
               <span
                 class="text-xs text-cyan-400 font-mono px-1.5 py-0.5 rounded bg-cyan-950/60 border border-cyan-800/50"
-                >PROTOTYPE 3D</span
+                >Full stack developer</span
               >
             </h1>
-            <p class="text-xs text-slate-400">
-              Habitación Interactiva de Proyectos
-            </p>
+            <p class="text-xs text-slate-400">digago7@gmail.com</p>
           </div>
         </div>
 
@@ -123,8 +121,7 @@
         <div
           class="glass-panel px-3 py-1.5 rounded-xl pointer-events-auto text-slate-400 text-[11px] flex items-center gap-2"
         >
-          <i class="fa-solid fa-cube text-cyan-400"></i> Prototipo Procedural
-          sin Assets Externos
+          <i class="fa-solid fa-cube text-cyan-400"></i> Three.js
         </div>
       </footer>
     </div>
@@ -155,8 +152,8 @@
                 >
                 <span
                   id="modal-status"
-                  class="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-400 border border-emerald-800/50"
-                  >Completado</span
+                  class="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded border"
+                  ></span
                 >
               </div>
               <h2 id="modal-title" class="text-2xl font-bold text-white mt-1">
@@ -182,13 +179,16 @@
               class="w-full h-full object-cover"
             ></canvas>
             <div
-              class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-4"
+              class="absolute inset-0 bg-linear-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-4"
             >
               <span
                 class="text-xs font-mono text-slate-300 bg-slate-900/90 px-3 py-1 rounded-lg border border-slate-700 flex items-center gap-2"
               >
-                <i class="fa-solid fa-eye text-cyan-400"></i> Textura Generada
-                en Tiempo Real (2D Canvas API)
+                <i
+                  id="modal-preview-icon"
+                  class="fa-solid fa-eye"
+                ></i>
+                <span id="modal-preview-label"></span>
               </span>
             </div>
           </div>
@@ -220,24 +220,9 @@
             class="glass-card p-4 rounded-2xl border border-cyan-500/20 bg-cyan-950/10 text-xs text-slate-300 space-y-2"
           >
             <div class="flex items-center gap-2 font-bold text-cyan-400">
-              <i class="fa-solid fa-code-compare"></i> ¿Cómo reemplazar por un
-              Modelo 3D (.gltf / .glb)?
+              <i class="fa-solid fa-list-check"></i> Características destacadas
             </div>
-            <p class="text-slate-400 leading-relaxed">
-              Este elemento interactivo está construido con
-              <code
-                class="font-mono text-cyan-300 bg-slate-900 px-1 py-0.5 rounded"
-                >Three.BoxGeometry</code
-              >
-              y una textura plana. En el archivo de código se incluye la función
-              comentada para sustituirlo fácilmente con
-              <code
-                class="font-mono text-cyan-300 bg-slate-900 px-1 py-0.5 rounded"
-                >GLTFLoader</code
-              >
-              manteniendo los mismos eventos de raycasting y animaciones de
-              cámara.
-            </p>
+            <ul id="modal-features" class="leading-relaxed space-y-1.5"></ul>
           </div>
         </div>
 
@@ -245,7 +230,7 @@
           class="p-4 sm:p-6 border-t border-slate-800 bg-slate-900/50 flex flex-wrap items-center justify-between gap-3"
         >
           <div class="text-xs text-slate-400 font-mono">
-            Status: <span class="text-emerald-400">Producción Ready</span>
+            Status: <span id="modal-status-detail" class="font-semibold"></span>
           </div>
           <div class="flex items-center gap-3 w-full sm:w-auto">
             <a
@@ -260,7 +245,7 @@
               id="modal-demo-link"
               href="#"
               target="_blank"
-              class="flex-1 sm:flex-none px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white text-xs font-semibold flex items-center justify-center gap-2 shadow-lg shadow-cyan-950/50 transition-all"
+              class="flex-1 sm:flex-none px-5 py-2.5 rounded-xl bg-linear-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white text-xs font-semibold flex items-center justify-center gap-2 shadow-lg shadow-cyan-950/50 transition-all"
             >
               <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
               Abrir Demo Live

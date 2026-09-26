@@ -4,6 +4,12 @@ export const PROJECTS_DATA = {
     wallName: "Pared 1 (Norte) • TV Display",
     title: "Contaco",
     category: "Web3 & Spatial Web",
+    status: {
+      label: "En Producción",
+      detail: "SaaS en vivo con uso real — contaco.store",
+      tone: "live",
+    },
+    preview: "WhatsApp → venta lista para el SAT",
     icon: "fa-tv",
     accentColor: "#6366f1",
     description:
@@ -12,12 +18,23 @@ export const PROJECTS_DATA = {
     github: "https://github.com/DiegoAvenda/conta",
     demo: "https://contaco.store",
     type: "tv",
+    features: [
+      "Pedidos por WhatsApp nativo que se convierten en venta automáticamente",
+      "POS integrado con contabilidad invisible lista para el SAT",
+      "Los números exactos para declarar, sin esfuerzo contable",
+    ],
   },
   east: {
     id: "east",
     wallName: "Pared 2 (Este) • Pizarrón de Trabajo",
     title: "Ray casting game",
     category: "SaaS & System Architecture",
+    status: {
+      label: "Demo Jugable",
+      detail: "Proyecto de portafolio — demo pública, sin uso comercial",
+      tone: "demo",
+    },
+    preview: "Ray casting en vivo sobre Canvas 2D",
     icon: "fa-chalkboard",
     accentColor: "#10b981",
     description: "Pseudo 3d game estilo wolfenstain 3d",
@@ -25,12 +42,23 @@ export const PROJECTS_DATA = {
     github: "https://github.com/DiegoAvenda/el-7",
     demo: "https://neo-diego-2d.vercel.app/",
     type: "whiteboard",
+    features: [
+      "Motor de ray casting estilo Wolfenstein 3D sobre Canvas 2D",
+      "Renderizado pseudo-3D en tiempo real con JavaScript puro",
+      "Jugable en el navegador sin dependencias externas",
+    ],
   },
   south: {
     id: "south",
     wallName: "Pared 3 (Sur) • Cuadro Galería Artística",
     title: "3D game",
     category: "Generative Canvas & Shaders",
+    status: {
+      label: "Demo Jugable",
+      detail: "Proyecto de portafolio — demo pública, sin uso comercial",
+      tone: "demo",
+    },
+    preview: "Shooter 3D con shaders GLSL en WebGL",
     icon: "fa-image",
     accentColor: "#f59e0b",
     description: "Third person shotter game with three.js",
@@ -38,12 +66,23 @@ export const PROJECTS_DATA = {
     github: "https://github.com/DiegoAvenda/neo-diego-3d-game",
     demo: "https://neo-diego-3d-game.vercel.app/",
     type: "picture",
+    features: [
+      "Shooter en tercera persona construido con Three.js",
+      "Shaders GLSL y renderizado WebGL en tiempo real",
+      "Jugable directo en el navegador",
+    ],
   },
   west: {
     id: "west",
     wallName: "Pared 4 (Oeste) • Monitor Holográfico",
     title: "Cyberpunk WebGL Game Engine",
     category: "Interactive Game Dev",
+    status: {
+      label: "Prototipo Técnico",
+      detail: "Prototipo experimental de portafolio",
+      tone: "prototype",
+    },
+    preview: "Prototipo de motor WebGL con física ligera",
     icon: "fa-desktop",
     accentColor: "#d946ef",
     description:
@@ -52,6 +91,11 @@ export const PROJECTS_DATA = {
     github: "https://github.com",
     demo: "https://example.com",
     type: "holo",
+    features: [
+      "Simulación física ligera corriendo en el navegador",
+      "Mapas de sombras y cámara con controles cibernéticos",
+      "Audio con Web Audio API y animaciones GSAP",
+    ],
   },
 }
 
